@@ -4,7 +4,6 @@ export const sendEmail = async (formData: {
     name: string;
     surname: string;
     phone: string;
-    email: string;
     message: string;
 }) => {
     try {
@@ -15,7 +14,7 @@ export const sendEmail = async (formData: {
                 name: formData.name,
                 surname: formData.surname,
                 phone: formData.phone,
-                email: formData.email,
+                email: 'creditcenter.arm@gmail.com',
                 message: formData.message
             },
             '27Okbd5aNUqkz4-9p'

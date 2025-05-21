@@ -14,7 +14,6 @@ export const EmailSection = React.forwardRef<HTMLDivElement>((_, ref) => {
         name: '',
         surname: '',
         phone: '',
-        email: '',
         message: ''
     });
 
@@ -25,12 +24,12 @@ export const EmailSection = React.forwardRef<HTMLDivElement>((_, ref) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await sendEmail(formData);
-        setFormData({ name: '', surname: '', phone: '', email: '', message: '' });
+        setFormData({ name: '', surname: '', phone: '', message: '' });
     };
 
     return (
         <EmailContainer ref={ref}>
-            <EmailTitle>Կապ Մեզ Հետ</EmailTitle>
+            <EmailTitle>Հեռախոսազանգի պատվեր</EmailTitle>
             <EmailForm onSubmit={handleSubmit}>
                 <EmailInput
                     type="text"
@@ -53,14 +52,6 @@ export const EmailSection = React.forwardRef<HTMLDivElement>((_, ref) => {
                     name="phone"
                     placeholder="Հեռախոսահամար"
                     value={formData.phone}
-                    onChange={handleChange}
-                    required
-                />
-                <EmailInput
-                    type="email"
-                    name="email"
-                    placeholder="Էլ. հասցե"
-                    value={formData.email}
                     onChange={handleChange}
                     required
                 />
