@@ -1,5 +1,22 @@
 import styled from 'styled-components';
 
+export const LogoImage = styled.img`
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+`;
+
+export const ContactSection = styled.div`
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ffffff;
+
+    p {
+        margin: 4px 0;
+    }
+`;
+
 export const FooterContainer = styled.footer`
     background-color: #047857;
     padding: 2rem;
