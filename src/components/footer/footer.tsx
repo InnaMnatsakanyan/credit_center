@@ -34,7 +34,7 @@ export const Footer = () => {
                     </h2>
                     <p><strong>Email:</strong> creditcenter.arm@gmail.com</p>
                     <p><strong>Phone:</strong> +374 93 80 49 09</p>
-                    <p><strong>Address:</strong> Proshyan 2, Yerevan, Armenia</p>
+                    <p><strong>Address:</strong> Proshyan 22, Yerevan, Armenia</p>
                 </ContactSection>
 
                 <FooterText>© {new Date().getFullYear()} Credit Center</FooterText>
