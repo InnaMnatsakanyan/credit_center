@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import { MenuBar } from '../../components/menu_bar/menu_bar';
 import { HeroSlide } from '../../components/hero_slide/hero_slide';
 import { BenefitsSection } from '../../components/benefits_section/benefits_section';
@@ -14,6 +14,18 @@ export const LandingScreen = () => {
     const calculatorRef = useRef<HTMLElement>(null);
     const aboutRef = useRef<HTMLElement>(null);
     const emailRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const targetIndex = sessionStorage.getItem('scrollTargetIndex');
+        if (targetIndex !== null) {
+            const index = parseInt(targetIndex, 10);
+            const targetRef = [heroRef, benefitsRef, calculatorRef, aboutRef, emailRef][index];
+            setTimeout(() => {
+                targetRef?.current?.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+            sessionStorage.removeItem('scrollTargetIndex');
+        }
+    }, []);
 
     return (
         <LandingScreenContainer>

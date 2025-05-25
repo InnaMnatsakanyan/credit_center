@@ -23,18 +23,16 @@ export const EmailForm = styled.form`
 
 export const EmailInput = styled.input`
     padding: 0.75rem 1rem;
-    border: 1px solid #eab099;
+    border: 1px solid #ecaa88;
     border-radius: 0.375rem;
     font-size: 1rem;
 `;
 
-export const EmailTextArea = styled.textarea`
+export const EmailTextArea = styled.input`
     padding: 0.75rem 1rem;
     border: 1px solid #eab099;
     border-radius: 0.375rem;
     font-size: 1rem;
-    resize: vertical;
-    min-height: 120px;
 `;
 
 export const EmailButton = styled.button`

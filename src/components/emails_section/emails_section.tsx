@@ -56,8 +56,9 @@ export const EmailSection = React.forwardRef<HTMLDivElement>((_, ref) => {
                     required
                 />
                 <EmailTextArea
+                    type="number"
                     name="message"
-                    placeholder="Նկարագրություն"
+                    placeholder="Գումարի չափ` 200.000 - 8.000.000(ԱՄԴ)"
                     value={formData.message}
                     onChange={handleChange}
                     required

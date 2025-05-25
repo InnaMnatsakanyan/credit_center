@@ -8,6 +8,7 @@ import {
     MenuBarPhone,
     MenuBarImage
 } from './menu_bar.styles';
+import {useNavigate} from "react-router-dom";
 
 const links = ['Գլխավոր', 'Ինչու Credit Center', 'Վարկային հաշվիչ', 'Մեր մասին', 'Ուղարկել նամակ'];
 type MenuBarProps = {
@@ -19,7 +20,11 @@ export const MenuBar: React.FC<MenuBarProps> = ({ sectionRefs }) => {
     const [dotPosition, setDotPosition] = useState<number | null>(null);
     const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
     const navRef = useRef<HTMLDivElement | null>(null);
+    const navigate = useNavigate();
 
+    const handleNavigateToPrivacy = () => {
+        window.location.href = '/';
+    };
     const handleMouseEnter = (index: number) => {
         const linkWidth = 128;
         const gap = 16;
@@ -31,13 +36,22 @@ export const MenuBar: React.FC<MenuBarProps> = ({ sectionRefs }) => {
         setDotPosition(null);
     };
 
+
     const handleClick = (index: number) => {
-        sectionRefs[index]?.current?.scrollIntoView({ behavior: 'smooth' });
+        const currentPath = location.pathname;
+        const sectionRef = sectionRefs[index];
+
+        if (currentPath === '/') {
+            sectionRef?.current?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            sessionStorage.setItem('scrollTargetIndex', index.toString());
+            navigate('/');
+        }
     };
 
     return (
         <MenuBarContainer>
-            <MenuBarImage src={'/logo.jpg'}/>
+            <MenuBarImage onClick={handleNavigateToPrivacy} src={'/logo.jpg'}/>
             <StyledNav ref={navRef} onMouseLeave={handleMouseLeave}>
                 {links.map((text, idx) => (
                     <StyledLink
