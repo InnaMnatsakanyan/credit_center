@@ -8,7 +8,7 @@ export const sendEmail = async (formData: {
 }) => {
     try {
         await emailjs.send(
-            'service_ej2sd7k',
+            'service_dpi4yi7',
             'template_525wptm',
             {
                 name: formData.name,
