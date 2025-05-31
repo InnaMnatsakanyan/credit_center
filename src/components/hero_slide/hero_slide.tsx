@@ -5,15 +5,17 @@ import {
     HeroHeading,
     HeroText,
     HeroButton,
-    HeroImage,
     HeroWrapper
 } from './hero_slide.styles';
+import { useTranslate } from '../../context/useTranslate';
 
 type HeroSlideProps = {
     scrollToRef: React.RefObject<HTMLElement>;
 };
 
 export const HeroSlide: React.FC<HeroSlideProps> = ({ scrollToRef }) => {
+    const t = useTranslate();
+
     const handleScroll = () => {
         scrollToRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
@@ -22,14 +24,17 @@ export const HeroSlide: React.FC<HeroSlideProps> = ({ scrollToRef }) => {
         <HeroContainer>
             <HeroWrapper>
                 <HeroContent>
-                    <HeroHeading>Օնլայն վարկ՝ վայրկյանների ընթացքում</HeroHeading>
+                    <HeroHeading>{t('hero_heading')}</HeroHeading>
                     <HeroText>
-                        Վարկ՝ արագ, պարզ ու վստահ։ Մեկ հպում, և գումարը ճանապարհին է։<br />
-                        Credit Center-ը քո ֆինանսական վստահությունը հաստատում է։
+                        {t('hero_text').split('\n').map((line, idx) => (
+                            <React.Fragment key={idx}>
+                                {line}
+                                <br />
+                            </React.Fragment>
+                        ))}
                     </HeroText>
-                    <HeroButton onClick={handleScroll}>Դիմել Հիմա</HeroButton>
+                    <HeroButton onClick={handleScroll}>{t('hero_button')}</HeroButton>
                 </HeroContent>
-                {/*<HeroImage src="/background.png" alt="Վարկային նկարագրություն" />*/}
             </HeroWrapper>
         </HeroContainer>
     );

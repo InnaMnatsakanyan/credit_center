@@ -117,3 +117,27 @@ export const MenuBarLogo = styled.div`
         padding: 0.5rem 0;
     }
 `;
+
+export const LanguageSelect = styled.select`
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #888;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #444;
+    box-shadow: 0 0 0 2px rgba(100, 100, 100, 0.2);
+  }
+`;
+
+export const LanguageOption = styled.option`
+  font-size: 14px;
+`;

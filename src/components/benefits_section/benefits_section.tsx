@@ -11,24 +11,24 @@ import {
     BenefitsImage,
     BenefitsFlexRow
 } from './benefits_section.styles';
-
-const benefits = [
-    'Արագ հաստատում',
-    'Բարենպաստ տոկոսադրույք',
-    'Պարզ պայմաններ',
-    'Օնլայն դիմում՝ ցանկացած պահի',
-    'Վստահելի գործընկեր'
-];
+import { useTranslate } from '../../context/useTranslate';
 
 export const BenefitsSection = React.forwardRef<HTMLDivElement>((_, ref) => {
+    const t = useTranslate();
+    const benefits: string[] = t('benefits_list');
+
     return (
         <BenefitsWrapper ref={ref}>
             <BenefitsContent>
-                <BenefitsTitle>Ինչու Credit Center?</BenefitsTitle>
+                <BenefitsTitle>{t('benefits_title')}</BenefitsTitle>
                 <BenefitsFlexRow>
                     <BenefitsDescription>
-                        Մենք տրամադրում ենք վարկեր, որոնք արագ են, պարզ, և հարմարեցված Ձեր կարիքներին։<br />
-                        Անհրաժեշտ չէ ժամեր անցկացնել հերթերում կամ երկար ձևաթղթեր լրացնել։
+                        {t('benefits_description').split('\n').map((line, idx) => (
+                            <React.Fragment key={idx}>
+                                {line}
+                                <br />
+                            </React.Fragment>
+                        ))}
                     </BenefitsDescription>
                     <BenefitsImage src="/whyus.jpg" alt="Why Us?" />
                 </BenefitsFlexRow>

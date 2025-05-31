@@ -6,21 +6,20 @@ import {
     AboutCard,
     AboutText
 } from './about_us.styles';
+import { useTranslate } from '../../context/useTranslate';
 
 export const AboutUs = React.forwardRef<HTMLDivElement>((_, ref) => {
+    const t = useTranslate();
+
     return (
         <AboutContainer ref={ref}>
-            <AboutTitle>Մեր Մասին</AboutTitle>
+            <AboutTitle>{t('about_title')}</AboutTitle>
             <AboutWrapper>
                 <AboutCard>
-                    <AboutText>
-                        Մենք տրամադրում ենք վարկային լուծումներ, որոնք հարմարեցված են թե՛ ֆիզիկական անձանց, թե՛ բիզնեսների կարիքներին։ Վարկային գործընթացը պարզեցված է՝ առանց բարդ ընթացակարգերի։
-                    </AboutText>
+                    <AboutText>{t('about_text_1')}</AboutText>
                 </AboutCard>
                 <AboutCard>
-                    <AboutText>
-                        Credit Center-ը հիմնված է վստահության, արագության և հասանելիության վրա։ Մեր նպատակն է լինել ձեր ֆինանսական կայունության հուսալի գործընկերը։
-                    </AboutText>
+                    <AboutText>{t('about_text_2')}</AboutText>
                 </AboutCard>
             </AboutWrapper>
         </AboutContainer>

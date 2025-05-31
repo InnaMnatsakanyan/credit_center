@@ -8,8 +8,11 @@ import {
     EmailButton
 } from './emails_section.styles';
 import { sendEmail } from './sendEmail';
+import { useTranslate } from '../../context/useTranslate';
 
 export const EmailSection = React.forwardRef<HTMLDivElement>((_, ref) => {
+    const t = useTranslate();
+
     const [formData, setFormData] = useState({
         name: '',
         surname: '',
@@ -29,12 +32,12 @@ export const EmailSection = React.forwardRef<HTMLDivElement>((_, ref) => {
 
     return (
         <EmailContainer ref={ref}>
-            <EmailTitle>Հեռախոսազանգի պատվեր</EmailTitle>
+            <EmailTitle>{t('email_title')}</EmailTitle>
             <EmailForm onSubmit={handleSubmit}>
                 <EmailInput
                     type="text"
                     name="name"
-                    placeholder="Անուն"
+                    placeholder={t('email_name')}
                     value={formData.name}
                     onChange={handleChange}
                     required
@@ -42,7 +45,7 @@ export const EmailSection = React.forwardRef<HTMLDivElement>((_, ref) => {
                 <EmailInput
                     type="text"
                     name="surname"
-                    placeholder="Ազգանուն"
+                    placeholder={t('email_surname')}
                     value={formData.surname}
                     onChange={handleChange}
                     required
@@ -50,20 +53,19 @@ export const EmailSection = React.forwardRef<HTMLDivElement>((_, ref) => {
                 <EmailInput
                     type="tel"
                     name="phone"
-                    placeholder="Հեռախոսահամար"
+                    placeholder={t('email_phone')}
                     value={formData.phone}
                     onChange={handleChange}
                     required
                 />
                 <EmailTextArea
-                    type="number"
                     name="message"
-                    placeholder="Գումարի չափ` 200.000 - 8.000.000(ԱՄԴ)"
+                    placeholder={t('email_message')}
                     value={formData.message}
                     onChange={handleChange}
                     required
                 />
-                <EmailButton type="submit">Ուղարկել</EmailButton>
+                <EmailButton type="submit">{t('email_submit')}</EmailButton>
             </EmailForm>
         </EmailContainer>
     );

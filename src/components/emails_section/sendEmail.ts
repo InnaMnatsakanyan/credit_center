@@ -1,11 +1,19 @@
 import emailjs from '@emailjs/browser';
+import { useLanguage } from '../../context/LanguageContext';
+import translations from '../../translations.json';
 
-export const sendEmail = async (formData: {
-    name: string;
-    surname: string;
-    phone: string;
-    message: string;
-}) => {
+export const sendEmail = async (
+    formData: {
+        name: string;
+        surname: string;
+        phone: string;
+        message: string;
+    },
+    language: string
+) => {
+    const t = (key: string) =>
+        translations[language]?.[key] ?? translations['arm'][key] ?? key;
+
     try {
         await emailjs.send(
             'service_dpi4yi7',
@@ -20,9 +28,9 @@ export const sendEmail = async (formData: {
             '27Okbd5aNUqkz4-9p'
         );
 
-        alert('Նամակը հաջողությամբ ուղարկվել է։');
+        alert(t('email_success'));
     } catch (error) {
         console.error('Email sending failed:', error);
-        alert('Նամակը չհաջողվեց ուղարկել։');
+        alert(t('email_error'));
     }
 };

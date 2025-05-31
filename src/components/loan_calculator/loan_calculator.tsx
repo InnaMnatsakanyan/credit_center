@@ -8,8 +8,11 @@ import {
     CalculatorResult,
     CalculatorButton
 } from './loan_calculator.styles';
+import { useTranslate } from '../../context/useTranslate';
 
 export const LoanCalculator = React.forwardRef<HTMLDivElement>((_, ref) => {
+    const t = useTranslate();
+
     const [amount, setAmount] = useState(100000);
     const [term, setTerm] = useState(12);
     const [rate, setRate] = useState(14);
@@ -26,10 +29,10 @@ export const LoanCalculator = React.forwardRef<HTMLDivElement>((_, ref) => {
 
     return (
         <CalculatorContainer ref={ref}>
-            <CalculatorTitle>Վարկային Հաշվիչ</CalculatorTitle>
+            <CalculatorTitle>{t('calculator_title')}</CalculatorTitle>
 
             <CalculatorField>
-                <CalculatorLabel>Վարկի գումար (֏)</CalculatorLabel>
+                <CalculatorLabel>{t('calculator_amount')}</CalculatorLabel>
                 <CalculatorInput
                     type="number"
                     value={amount}
@@ -38,7 +41,7 @@ export const LoanCalculator = React.forwardRef<HTMLDivElement>((_, ref) => {
             </CalculatorField>
 
             <CalculatorField>
-                <CalculatorLabel>Տոկոսադրույք (% տարեկան)</CalculatorLabel>
+                <CalculatorLabel>{t('calculator_rate')}</CalculatorLabel>
                 <CalculatorInput
                     type="number"
                     value={rate}
@@ -47,7 +50,7 @@ export const LoanCalculator = React.forwardRef<HTMLDivElement>((_, ref) => {
             </CalculatorField>
 
             <CalculatorField>
-                <CalculatorLabel>Վարկի ժամկետ (ամիս)</CalculatorLabel>
+                <CalculatorLabel>{t('calculator_term')}</CalculatorLabel>
                 <CalculatorInput
                     type="number"
                     value={term}
@@ -55,20 +58,20 @@ export const LoanCalculator = React.forwardRef<HTMLDivElement>((_, ref) => {
                 />
             </CalculatorField>
 
-            <CalculatorButton onClick={handleCalculate}>Հաշվել</CalculatorButton>
+            <CalculatorButton onClick={handleCalculate}>{t('calculator_button')}</CalculatorButton>
 
             {showResult && (
                 <CalculatorResult>
                     <div className="result-line">
-                        <span>Ամսական վճարում՝</span>
+                        <span>{t('calculator_monthly')}</span>
                         <strong>{monthlyPayment.toFixed(0)} ֏</strong>
                     </div>
                     <div className="result-line">
-                        <span>Ընդհանուր վճարում՝</span>
+                        <span>{t('calculator_total')}</span>
                         <strong>{totalPayment.toFixed(0)} ֏</strong>
                     </div>
                     <div className="result-line">
-                        <span>Ավել վճարում՝</span>
+                        <span>{t('calculator_overpayment')}</span>
                         <strong>{overpayment.toFixed(0)} ֏</strong>
                     </div>
                 </CalculatorResult>
