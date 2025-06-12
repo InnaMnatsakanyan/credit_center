@@ -5,19 +5,21 @@ import { PrivacyPolicyScreen } from "./presentation/privacy_policy/privacy_polic
 import { TermsConditionsScreen } from "./presentation/terms_and_conditions/terms_and_conditions_screen";
 import { Analytics } from "./components/analytics/analytics";
 import { LanguageProvider } from "./context/LanguageContext";
+import {LanguageSync} from "./context/LanguageSync";
 
 const App: React.FC = () => {
     return (
-        <LanguageProvider>
-            <Router>
+        <Router>
+            <LanguageProvider>
+                <LanguageSync />
                 <Analytics />
                 <Routes>
-                    <Route path="/" element={<LandingScreen />} />
-                    <Route path="/privacy_policy" element={<PrivacyPolicyScreen />} />
-                    <Route path="/terms" element={<TermsConditionsScreen />} />
+                    <Route path="/:lang/" element={<LandingScreen />} />
+                    <Route path="/:lang/privacy_policy" element={<PrivacyPolicyScreen />} />
+                    <Route path="/:lang/terms" element={<TermsConditionsScreen />} />
                 </Routes>
-            </Router>
-        </LanguageProvider>
+            </LanguageProvider>
+        </Router>
     );
 };
 

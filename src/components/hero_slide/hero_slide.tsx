@@ -15,6 +15,8 @@ type HeroSlideProps = {
 
 export const HeroSlide: React.FC<HeroSlideProps> = ({ scrollToRef }) => {
     const t = useTranslate();
+    const heroText = t('hero_text');
+    const heroTextLines = typeof heroText === 'string' ? heroText.split('\n') : [];
 
     const handleScroll = () => {
         scrollToRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -26,7 +28,7 @@ export const HeroSlide: React.FC<HeroSlideProps> = ({ scrollToRef }) => {
                 <HeroContent>
                     <HeroHeading>{t('hero_heading')}</HeroHeading>
                     <HeroText>
-                        {t('hero_text').split('\n').map((line, idx) => (
+                        {heroTextLines.map((line, idx) => (
                             <React.Fragment key={idx}>
                                 {line}
                                 <br />

@@ -15,7 +15,8 @@ import { useTranslate } from '../../context/useTranslate';
 
 export const BenefitsSection = React.forwardRef<HTMLDivElement>((_, ref) => {
     const t = useTranslate();
-    const benefits: string[] = t('benefits_list');
+    const benefitsRaw: string[] = t('benefits_list');
+    const benefits = Array.isArray(benefitsRaw) ? benefitsRaw : [];
 
     return (
         <BenefitsWrapper ref={ref}>
@@ -23,7 +24,7 @@ export const BenefitsSection = React.forwardRef<HTMLDivElement>((_, ref) => {
                 <BenefitsTitle>{t('benefits_title')}</BenefitsTitle>
                 <BenefitsFlexRow>
                     <BenefitsDescription>
-                        {t('benefits_description').split('\n').map((line, idx) => (
+                        {benefits.map((line, idx) => (
                             <React.Fragment key={idx}>
                                 {line}
                                 <br />

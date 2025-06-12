@@ -60,7 +60,7 @@ export const MenuBar: React.FC<MenuBarProps> = ({ sectionRefs }) => {
             <StyledNav ref={navRef} onMouseLeave={handleMouseLeave}>
                 {links.map((text, idx) => (
                     <StyledLink
-                        key={text}
+                        key={idx}
                         href="#"
                         ref={(el) => (linkRefs.current[idx] = el)}
                         onMouseEnter={() => handleMouseEnter(idx)}
@@ -76,8 +76,8 @@ export const MenuBar: React.FC<MenuBarProps> = ({ sectionRefs }) => {
             </StyledNav>
             <LanguageSelect value={language} onChange={(e) => setLanguage(e.target.value)}>
                 <LanguageOption value="arm">ARM</LanguageOption>
-                <LanguageOption value="ru">RU</LanguageOption>
-                <LanguageOption value="en">EN</LanguageOption>
+                <LanguageOption value="rus">RU</LanguageOption>
+                <LanguageOption value="eng">EN</LanguageOption>
             </LanguageSelect>
             <MenuBarPhone>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
